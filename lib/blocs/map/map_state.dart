@@ -1,23 +1,21 @@
 part of 'map_bloc.dart';
 
 class MapState extends Equatable {
+  final Set<Marker> newMarkers;
+  final bool isMapInited;
 
-  final bool isMapInitialized;
-  final bool followUser;
-
-  const MapState({
-    this.isMapInitialized = false,
-    this.followUser = false,
-  });
+  const MapState({this.isMapInited = false, Set<Marker>? markers})
+      : newMarkers = markers ?? const {};
 
   MapState copyWith({
+    Set<Marker>? myMarkers,
     bool? isMapInitialized,
-    bool? followUser
-  }) => MapState(
-    isMapInitialized: isMapInitialized ?? this.isMapInitialized,
-    followUser: followUser ?? this.followUser,
-  );
-  
+  }) =>
+      MapState(
+        isMapInited: isMapInitialized ?? isMapInited,
+        markers: myMarkers ?? this.newMarkers,
+      );
+
   @override
-  List<Object> get props => [isMapInitialized, followUser];
+  List<Object> get props => [isMapInited, newMarkers];
 }

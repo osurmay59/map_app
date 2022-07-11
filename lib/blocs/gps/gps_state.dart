@@ -2,27 +2,29 @@ part of 'gps_bloc.dart';
 
 class GpsState extends Equatable {
 
-  final bool isGpsEnable;
+  final bool isGpsEnabled;
   final bool isGpsPermissionGranted;
 
-  bool get isAllGranted => isGpsEnable && isGpsPermissionGranted;
-
+  bool get isAllGranted => isGpsEnabled && isGpsPermissionGranted;
+  
   const GpsState({
-    required this.isGpsEnable,
+    required this.isGpsEnabled, 
     required this.isGpsPermissionGranted
-
   });
 
   GpsState copyWith({
-    bool? isGpsEnable,
+    bool? isGpsEnabled,
     bool? isGpsPermissionGranted,
-  }) => GpsState(isGpsEnable: isGpsEnable ?? this.isGpsEnable, isGpsPermissionGranted: isGpsPermissionGranted ?? this.isGpsPermissionGranted);
+  }) => GpsState(
+    isGpsEnabled: isGpsEnabled ?? this.isGpsEnabled, 
+    isGpsPermissionGranted: isGpsPermissionGranted ?? this.isGpsPermissionGranted
+  );
   
   @override
-  List<Object> get props => [isGpsEnable, isGpsPermissionGranted];
-  
+  List<Object> get props => [ isGpsEnabled, isGpsPermissionGranted ];
+
   @override
-  String toString () =>'{isGpsEnabled: $isGpsEnable, isGpsPermissionGranted: $isGpsPermissionGranted}';
+  String toString() => '{ isGpsEnabled: $isGpsEnabled, isGpsPermissionGranted: $isGpsPermissionGranted }';
 
 }
 
